@@ -480,4 +480,18 @@ class LSActiveRecord extends CActiveRecord
             }
         }
     }
+
+    /**
+     * @param array $attributes
+     * @return boolean
+     */
+    public function update($attributes = null)
+    {
+        // NB: This cases double validation when save() does an update.
+        if ($this->validate($attributes)) {
+            return parent::update($attributes);
+        } else {
+            return false;
+        }
+    }
 }
