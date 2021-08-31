@@ -487,7 +487,7 @@ class LSActiveRecord extends CActiveRecord
      */
     public function update($attributes = null)
     {
-        // NB: This cases double validation when save() does an update.
+        // NB: This causes double validation when save() does an update.
         if ($this->validate($attributes)) {
             return parent::update($attributes);
         } else {
