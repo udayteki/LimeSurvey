@@ -482,13 +482,16 @@ class LSActiveRecord extends CActiveRecord
     }
 
     /**
+     * Doesn't work, since this can be run from CActiveRecord at save() when record is not new.
+     *
+     * @param bool $runValidation
      * @param array $attributes
      * @return boolean
      */
-    public function update($attributes = null)
+    public function update(bool $runValidation = true, $attributes = null)
     {
         // NB: This causes double validation when save() does an update.
-        if ($this->validate($attributes)) {
+        if ($runValidation && $this->validate($attributes)) {
             return parent::update($attributes);
         } else {
             return false;
