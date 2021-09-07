@@ -129,6 +129,7 @@
                                     <!-- Survey is not active -->
                                     <i  v-if="!$store.state.surveyActiveState"
                                         class="fa fa-bars margin-right bigIcons dragPointer question-question-list-item-drag"
+                                        :class=" allowOrganizer ? '' : 'disabled' "
                                         :draggable="allowOrganizer"
                                         @dragend="endDraggingQuestion($event, question)" 
                                         @dragstart="startDraggingQuestion($event, question, questiongroup)"
@@ -138,7 +139,7 @@
                                     </i>
                                     <!-- Survey is active -->
                                     <i  v-else
-                                        class="fa fa-bars margin-right bigIcons disabled" />            
+                                        class="fa fa-bars margin-right bigIcons" />            
                                 <a
                                     :href="question.link"  
                                     class="col-9 pjax question-question-list-item-link display-as-container" 
