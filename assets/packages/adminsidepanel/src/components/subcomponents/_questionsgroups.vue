@@ -81,8 +81,7 @@
                     <div class="col-12 ls-flex-row nowrap ls-space padding right-5 bottom-5">
                         <!-- Bars Icon (for move action) -->
                         <i 
-                            class="fa fa-bars bigIcons dragPointer" 
-                            :class=" allowOrganizer ? '' : 'disabled' "
+                            class="fa fa-bars bigIcons dragPointer"
                             :draggable="allowOrganizer"
                             @dragend="endDraggingGroup($event, questiongroup)" 
                             @dragstart="startDraggingGroup($event, questiongroup)"
