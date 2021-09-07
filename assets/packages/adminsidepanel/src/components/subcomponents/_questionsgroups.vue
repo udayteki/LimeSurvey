@@ -353,7 +353,6 @@ export default {
                 } 
                 
             } else {
-                /** if(window.SideMenuData.isActive) {return;} **/
                 this.addActive(questiongroupObject.gid);
                 if (this.draggedQuestion.gid !== questiongroupObject.gid) {
                     const removedFromInital = LS.ld.remove(
