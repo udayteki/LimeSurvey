@@ -48,8 +48,7 @@
             </div>
             <div class="scoped-toolbuttons-right">
                 <button
-                    class="btn btn-default"
-                    v-if="createQuestionAllowed"
+                    class="btn btn-default right-10"
                     @click="toggleOrganizer"
                     :title="translate(allowOrganizer ? 'lockOrganizerTitle' : 'unlockOrganizerTitle')"
                 >
@@ -57,7 +56,6 @@
                 </button>
                 <button
                     class="btn btn-default"
-                    v-if="createQuestionAllowed"
                     @click="collapseAll"
                     :title="translate('collapseAll')"
                 >
