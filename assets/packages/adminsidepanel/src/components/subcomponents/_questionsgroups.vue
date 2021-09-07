@@ -80,6 +80,7 @@
                 >
                     <div class="col-12 ls-flex-row nowrap ls-space padding right-5 bottom-5">
                         <i 
+                            v-if="!surveyIsActive"
                             class="fa fa-bars bigIcons dragPointer" 
                             :class=" allowOrganizer ? '' : 'disabled' "
                             :draggable="allowOrganizer"
