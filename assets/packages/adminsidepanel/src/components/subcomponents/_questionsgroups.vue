@@ -65,6 +65,7 @@
                 </button>
             </div>
         </div>
+        <!-- List of all Question Groups with Questions -->
         <div class="ls-flex-row ls-space padding all-0">
             <ul 
                 class="list-group col-12 questiongroup-list-group"  
@@ -79,7 +80,6 @@
                 >
                     <div class="col-12 ls-flex-row nowrap ls-space padding right-5 bottom-5">
                         <i 
-                            v-if="!surveyIsActive"
                             class="fa fa-bars bigIcons dragPointer" 
                             :class=" allowOrganizer ? '' : 'disabled' "
                             :draggable="allowOrganizer"
