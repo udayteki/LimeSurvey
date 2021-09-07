@@ -79,6 +79,7 @@
                     @dragenter="dragoverQuestiongroup($event, questiongroup)"
                 >
                     <div class="col-12 ls-flex-row nowrap ls-space padding right-5 bottom-5">
+                        <!-- Bars Icon (for move action) -->
                         <i 
                             v-if="!surveyIsActive"
                             class="fa fa-bars bigIcons dragPointer" 
