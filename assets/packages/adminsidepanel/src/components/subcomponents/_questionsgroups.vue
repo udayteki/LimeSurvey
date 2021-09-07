@@ -47,6 +47,7 @@
 
             </div>
             <div class="scoped-toolbuttons-right">
+                <!-- Lock Button -->
                 <button
                     class="btn btn-default right-10"
                     @click="toggleOrganizer"
@@ -54,6 +55,7 @@
                 >
                     <i :class="allowOrganizer ? 'fa fa-unlock' : 'fa fa-lock'" />
                 </button>
+                <!-- Collapse all Button -->
                 <button
                     class="btn btn-default"
                     @click="collapseAll"
