@@ -125,7 +125,8 @@
                                 :data-has-condition="questionHasCondition(question)"
                                 :title="question.question_flat"
                                 @dragenter="dragoverQuestion($event, question, questiongroup)"
-                            >
+                            >       
+                                    <!-- Survey is not active -->
                                     <i 
                                         v-if="!$store.state.surveyActiveState"
                                         class="fa fa-bars margin-right bigIcons dragPointer question-question-list-item-drag" 
@@ -137,6 +138,9 @@
                                     >
                                         &nbsp;
                                     </i>
+                                    <!-- Survey is active -->
+                                    <i  v-else
+                                        class="fa fa-bars margin-right bigIcons disabled" />            
                                 <a
                                     :href="question.link"  
                                     class="col-9 pjax question-question-list-item-link display-as-container" 
