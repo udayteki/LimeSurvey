@@ -81,7 +81,6 @@
                     <div class="col-12 ls-flex-row nowrap ls-space padding right-5 bottom-5">
                         <!-- Bars Icon (for move action) -->
                         <i 
-                            v-if="!surveyIsActive"
                             class="fa fa-bars bigIcons dragPointer" 
                             :class=" allowOrganizer ? '' : 'disabled' "
                             :draggable="allowOrganizer"
@@ -355,7 +354,7 @@ export default {
                 } 
                 
             } else {
-                if(window.SideMenuData.isActive) {return;}
+                /** if(window.SideMenuData.isActive) {return;} **/
                 this.addActive(questiongroupObject.gid);
                 if (this.draggedQuestion.gid !== questiongroupObject.gid) {
                     const removedFromInital = LS.ld.remove(
