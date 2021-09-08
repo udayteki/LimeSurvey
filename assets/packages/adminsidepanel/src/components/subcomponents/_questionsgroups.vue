@@ -71,6 +71,7 @@
                 class="list-group col-12 questiongroup-list-group"  
                 @drop="dropQuestionGroup($event, questiongroup)"
             >
+                <!-- Question Group -->
                 <li 
                     v-for="questiongroup in orderedQuestionGroups" 
                     v-bind:key="questiongroup.gid" 
