@@ -169,7 +169,7 @@ export default {
     mixins: [ajaxMethods],
     data() {
         return {
-            active: [],
+            openQuestionGroups: [],
             questiongroupDragging: false,
             draggedQuestionGroup: null,
             questionDragging: false,
@@ -240,7 +240,7 @@ export default {
             this.$store.dispatch('unlockLockOrganizer');
         },
         collapseAll() {
-            this.active = [];
+            this.openQuestionGroups = [];
         },
         createFullQuestionLink() {
           if (this.createQuestionAllowed) {
@@ -295,7 +295,7 @@ export default {
             return gid == this.$store.state.lastQuestionGroupOpen;
         },
         isOpen(index) {
-            const result = LS.ld.indexOf(this.active, index) != -1;
+            const result = LS.ld.indexOf(this.openQuestionGroups, index) != -1;
 
             if (this.questiongroupDragging === true) {
                 return false;
@@ -305,20 +305,20 @@ export default {
         },
         toggleActivation(index) {
             if (this.isOpen(index)) {
-                let removed = LS.ld.remove(this.active, idx => {
+                let removed = LS.ld.remove(this.openQuestionGroups, idx => {
                     return idx === index;
                 });
             } else {
-                this.active.push(index);
+                this.openQuestionGroups.push(index);
             }
-            this.$store.commit("questionGroupOpenArray", this.active);
+            this.$store.commit("questionGroupOpenArray", this.openQuestionGroups);
             this.updatePjaxLinks();
         },
         addActive(questionGroupId) {
             if (!this.isOpen(questionGroupId)) {
-                this.active.push(questionGroupId);
+                this.openQuestionGroups.push(questionGroupId);
             }
-            this.$store.commit("questionGroupOpenArray", this.active);
+            this.$store.commit("questionGroupOpenArray", this.openQuestionGroups);
         },
         openQuestionGroup(questionGroup) {
             this.addActive(questionGroup.gid);
@@ -427,7 +427,7 @@ export default {
         }
     },
     mounted() {
-        this.active = this.$store.state.questionGroupOpenArray;
+        this.openQuestionGroups = this.$store.state.questionGroupOpenArray;
         this.updatePjaxLinks();
     }
 };
