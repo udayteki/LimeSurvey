@@ -49,7 +49,7 @@
             <div class="scoped-toolbuttons-right">
                 <!-- Lock Button -->
                 <button
-                    class="btn btn-default right-10"
+                    class="btn btn-default"
                     @click="toggleOrganizer"
                     :title="translate(allowOrganizer ? 'lockOrganizerTitle' : 'unlockOrganizerTitle')"
                 >
