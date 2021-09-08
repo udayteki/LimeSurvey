@@ -167,7 +167,7 @@ import ajaxMethods from "../../mixins/runAjax.js";
 
 export default {
     mixins: [ajaxMethods],
-    data(){
+    data() {
         return {
             active: [],
             questiongroupDragging: false,
@@ -178,8 +178,12 @@ export default {
         };
     },
     computed: {
-        allowOrganizer() {return this.$store.state.allowOrganizer===1},
-        surveyIsActive() {return window.SideMenuData.isActive; },
+        allowOrganizer() {
+            return this.$store.state.allowOrganizer===1
+        },
+        surveyIsActive() {
+            return window.SideMenuData.isActive;
+        },
         createQuestionGroupLink() { 
             return window.SideMenuData.createQuestionGroupLink
         },
@@ -232,14 +236,14 @@ export default {
         }
     },
     methods: {
-        toggleOrganizer(){
+        toggleOrganizer() {
             this.$store.dispatch('unlockLockOrganizer');
         },
         collapseAll() {
             this.active = [];
         },
         createFullQuestionLink() {
-          if(this.createQuestionAllowed) {
+          if (this.createQuestionAllowed) {
             if (LS.reparsedParameters().combined.gid) {
               return LS.createUrl(this.createQuestionLink, {gid: LS.reparsedParameters().combined.gid});
             }
@@ -293,7 +297,9 @@ export default {
         isOpen(index) {
             const result = LS.ld.indexOf(this.active, index) != -1;
 
-            if (this.questiongroupDragging === true) return false;
+            if (this.questiongroupDragging === true) {
+                return false;
+            }
 
             return result;
         },
@@ -411,7 +417,9 @@ export default {
         },
         dragoverQuestion($event, questionObject, questionGroupObject) {
             if (this.questionDragging) {
-                if(this.questionDragging.gid !== questionObject.gid && window.SideMenuData.isActive) {return;}
+                if (this.questionDragging.gid !== questionObject.gid && window.SideMenuData.isActive) {
+                    return;
+                }
                 let orderSwap = questionObject.question_order;
                 questionObject.question_order = this.draggedQuestion.question_order;
                 this.draggedQuestion.question_order = orderSwap;
