@@ -89,11 +89,13 @@
                         >
                             &nbsp;
                         </i>
+                        <!-- Question Group Link -->
                         <a 
                             class="col-12 pjax"
                             :href="questiongroup.link" 
                             @click.stop="openQuestionGroup(questiongroup)" 
                         > 
+                        <!-- Question Group Name -->
                             <span 
                                 :class="$store.getters.isRTL ? 'question_text_ellipsize pull-right' : 'question_text_ellipsize pull-left'"
                                 :style="{ 'max-width': itemWidth }"
@@ -114,6 +116,7 @@
                             v-if="isOpen(questiongroup.gid)" 
                             @drop="dropQuestion($event, question)"
                         >
+                            <!-- Question -->
                             <li 
                                 v-for="question in orderQuestions(questiongroup.questions)" 
                                 v-bind:key="question.qid" 
@@ -127,6 +130,7 @@
                                 @dragenter="dragoverQuestion($event, question, questiongroup)"
                             >       
                                     <!-- Survey is not active -->
+                                    <!-- Bars Icon (for move action) -->
                                     <i  v-if="!$store.state.surveyActiveState"
                                         class="fa fa-bars margin-right bigIcons dragPointer question-question-list-item-drag"
                                         :class=" allowOrganizer ? '' : 'disabled' "
@@ -138,6 +142,7 @@
                                         &nbsp;
                                     </i>
                                     <!-- Survey is active -->
+                                    <!-- Bars Icon (for move action) -->
                                     <i  v-else
                                         class="fa fa-bars margin-right bigIcons" />            
                                 <a
