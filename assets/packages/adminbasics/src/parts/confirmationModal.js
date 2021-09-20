@@ -16,12 +16,13 @@ const ConfirmationModal = function(e){
         href        : null,
         message     : null,
         keepopen    : null,
-        postDatas   : null,
+        postdata   : null,
         gridid      : null,
         title       : null,
         btnclass    : 'btn-primary',
         btntext     : actionBtn.dataset.actionbtntext,
         "ajax-url"  : null,
+        posturl     : null,
     };
 
     //////METHODS
@@ -29,6 +30,10 @@ const ConfirmationModal = function(e){
     const _parseOptions = (e) => {
         return _.each(optionsDefault, (value, key) => {
             optionsDefault[key] = $(_this).data(key) || $(e.relatedTarget).data(key) || optionsDefault[key];
+            console.log(key);
+            console.log(_this);
+            console.log(e.relatedTarget);
+            console.log(optionsDefault);
         });
     },
     //Generate a simple link on the ok button
@@ -63,7 +68,7 @@ const ConfirmationModal = function(e){
             $.ajax({
                 type: "POST",
                 url: options['ajax-url'],
-                data: options.postDatas,
+                data: options['post-data'],
 
                 success : function(html, statut)
                 {
@@ -75,6 +80,12 @@ const ConfirmationModal = function(e){
                 }
 
             });
+        });
+    },
+    _sendPost = () => {
+        LOG.log('Binding post handler on confirmation dialog');
+        $(_this).find('.btn-ok').on('click', function (ev) {
+            window.LS.sendPost(options.posturl, '',options.postdata);
         });
     },
     _setTarget = () => {
@@ -91,6 +102,11 @@ const ConfirmationModal = function(e){
         //Set up an ajax post
         if (!!options['ajax-url']) {
             _ajaxHandler();
+            return;
+        }
+        //Set up a handler to send a POST request
+        if (!!options.posturl) {
+            _sendPost();
             return;
         }
         LOG.error("Confirmation modal: Found neither data-href or data-onclick, nor ajax data.");
