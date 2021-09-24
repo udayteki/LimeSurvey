@@ -253,6 +253,7 @@ class ResponsesController extends LSBaseController
                     $aData['rlanguage'] = $rlanguage;
                 }
                 $highlight = false;
+                $aData['answers'] = [];
                 for ($i = 0; $i < $nfncount + 1; $i++) {
                     if ($fnames[$i][0] != 'completed' && is_null($aResult[$fnames[$i][0]])) {
                         continue; // irrelevant, so don't show
@@ -321,10 +322,12 @@ class ResponsesController extends LSBaseController
                             ENT_QUOTES
                         );
                     }
-                    $aData['answervalue'] = $answervalue;
                     $aData['inserthighlight'] = $inserthighlight;
                     $aData['fnames'] = $fnames;
-                    $aData['i'] = $i;
+                    $aData['answers'][] = [
+                        'answervalue' => $answervalue,
+                        'i' => $i
+                    ];
                 }
             } else {
                 App()->session['flashmessage'] = gT("This response ID is invalid.");
@@ -340,8 +343,7 @@ class ResponsesController extends LSBaseController
             $this->render('browseidrow_view', [
                 'id'              => $aData['id'],
                 'surveyid'        => $aData['surveyId'],
-                'i'               => $aData['i'],
-                'answervalue'     => $aData['answervalue'],
+                'answers'         => $aData['answers'],
                 'inserthighlight' => $aData['inserthighlight'],
                 'fnames'          => $aData['fnames'],
             ]);

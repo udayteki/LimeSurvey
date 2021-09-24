@@ -2,9 +2,8 @@
 /**
  * @var $id int
  * @var $surveyid int
- * @var $i int
+ * @var $answers array
  * @var $fnames array
- * @var $answervalue string
  * @var $inserthighlight string
  */
 ?>
@@ -20,22 +19,25 @@
             <?php echo CHtml::endForm() ?>
 
             <table class='detailbrowsetable table table-striped'>
-                <?php if (!isset($fnames[$i]['type']) ||
-                    (isset($fnames[$i]['type']) && $fnames[$i]['type'] !== '|') ||
-                    (isset($fnames[$i]['type']) && $fnames[$i]['type'] === '|' && $answervalue !== '')
-                ): ?>
-                    <tr <?php echo $inserthighlight; ?>>
-                        <th>
-                            <?php if (isset($fnames[$i]['code'])) { ?>
-                                [<strong class="qcode"><?php echo $fnames[$i]['code']; ?></strong>]
-                            <?php } ?>
-                            <?php echo strip_tags(stripJavaScript($fnames[$i][1])); ?></th>
-                        <td>
-                            <?php
-                            echo $answervalue; ?>
-                        </td>
-                    </tr>
-                <?php endif; ?>
+
+                <?php foreach ($answers as $answer) : ?>
+                    <?php if (!isset($fnames[$answer['i']]['type']) ||
+                        (isset($fnames[$answer['i']]['type']) && $fnames[$answer['i']]['type'] !== '|') ||
+                        (isset($fnames[$answer['i']]['type']) && $fnames[$answer['i']]['type'] === '|' && $answer['answervalue'] !== '')
+                    ) : ?>
+                        <tr <?php echo $inserthighlight; ?>>
+                            <th>
+                                <?php if (isset($fnames[$answer['i']]['code'])) { ?>
+                                    [<strong class="qcode"><?php echo $fnames[$answer['i']]['code']; ?></strong>]
+                                <?php } ?>
+                                <?php echo strip_tags(stripJavaScript($fnames[$answer['i']][1])); ?></th>
+                            <td>
+                                <?php
+                                echo $answer['answervalue']; ?>
+                            </td>
+                        </tr>
+                    <?php endif; ?>
+                <?php endforeach; ?>
             </table>
         </div>
     </div>
