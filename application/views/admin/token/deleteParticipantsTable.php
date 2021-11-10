@@ -7,19 +7,24 @@
     <div class="row welcom survey-action">
         <div class="col-lg-12 content-right">
             <div class="jumbotron message-box">
-                <h3 class="lead"><?php eT('Delete survey participants table'); ?></h3>
+                <h3 class="lead">
+                    <?php eT('Delete survey participants table'); ?>
+                </h3>
                 <p>
-            <?php eT('Delete participants table will switch the survey back to open-access mode.'); ?>
-            <br /> <br />
-            <?php eT('Access codes will no longer be required to access this survey.'); ?>
-            <br /> <br />
-            <?php eT('A backup of this table will be made if you proceed. Your system administrator will be able to access this table.'); ?>
-            <br />
-            <?php echo '('. $backupTableName .')'; ?>
-            <br /> <br />
-            <?php eT("You can switch back to closed-access mode at any time. Navigate to Settings --> Survey participants and click on the 'Switch to closed-access mode' button."); ?>
-            <br /> <br />
-        </p>
+                    <?php eT('Deleting the survey participants table will switch the survey back to open-access mode.'); ?>
+                    <br />
+                    <?php eT('Access codes will no longer be required to access this survey.'); ?>
+                    <br />
+                    <br />
+                    <?php eT('A backup of this table will be made if you proceed. Your system administrator will be able to access this table.'); ?>
+                    <br />
+                    <?php echo '('. $backupTableName .')'; ?>
+                    <br />
+                    <br />
+                    <?php eT("You can switch back to closed-access mode at any time. Navigate to Settings --> Survey participants and click on the ''Switch to closed-access mode'' button."); ?>
+                    <br />
+                    <br />
+                </p>
         <input
             class="btn btn-default"
             type="submit"
