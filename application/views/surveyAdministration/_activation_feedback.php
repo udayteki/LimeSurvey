@@ -17,7 +17,7 @@
         <div class="col-lg-12 content-right">
             <div class='jumbotron message-box'>
                 <h3>
-                    <?php eT('Activate Survey'); ?> (<?php echo $survey->currentLanguageSettings->surveyls_title; ?>)
+                    <?php eT('Activate Survey'); ?>
                 </h3>
                 <p class='lead'>
                     <?php eT("Your survey has been activated and the responses and statistics section is now available."); ?>
@@ -46,16 +46,18 @@
                         <br />
                         <?php if(!tableExists('tokens_'.$iSurveyID)):?>
                             <!-- Open Access Mode -->
-                            <?php eT("By default, surveys are activated in open-access mode. Participants do not need an invitation (access code)"); ?>
-                            <?php eT(" to complete the survey. You can share your survey via URL, QR code or social media. Navigate to Settings --> Overview --> Share your survey."); ?>
+                            <?php eT("By default, surveys are activated in open-access mode. Participants do not need an invitation (access code) to complete the survey. You can share your survey via URL, QR code or social media. Navigate to Settings --> Overview --> Share your survey."); ?>
+    
                             <br />
                             <br />
+    
                             <!-- Closed Access Mode -->
-                            <?php eT("To exit open-access mode, please click Switch to closed-access mode below. In closed-access mode, only those who are invited (and have an access code) can access the survey."); ?>
+                            <?php eT("To exit open-access mode, please click Switch to closed-access mode below.  In closed-access mode, only those who are invited (and have an access code) can access the survey. "); ?>
                             
                             <br />
                             <br />
-                            <?php eT("You can switch back to open-access mode at any time. Navigate to Settings --> Survey participants and click on the red 'Delete participants table' button from the top bar.");?>
+
+                            <?php eT("You can switch back to open-access mode at any time. Navigate to Settings --> Survey participants and click on the red  'Delete participants table' button from the top bar."); ?>
                             <br />
                             <br />
                             <input
