@@ -17,24 +17,32 @@
 
                     <?php
                         if (Permission::model()->hasSurveyPermission($oSurvey->sid, 'surveysettings', 'update') || Permission::model()->hasSurveyPermission($oSurvey->sid, 'tokens','create')) {
-                            /** eT("If you initialise a survey participants table for this survey then this survey will only be accessible to users who provide an access code either manually or by URL."); **/
                             eT("If you switch to closed-access mode then this survey will only be accessible to users who provide an access code either manually or by URL."); ?>
-                            <br /> <br />
+                            <br />
+                            <br />
                             <?php eT("You can switch back to open-access mode at any time. Navigate to Settings --> Survey participants and click on the red 'Delete participants table' button from the top bar."); ?>
-                        <?php ?><br /><br />
-                        <br /><br />
+                        <?php ?>
+
+                        <br />
+                        <br />
+                        <br />
+                        <br />
 
                         <?php echo CHtml::form(array("admin/tokens/sa/index/surveyid/{$oSurvey->sid}"), 'post'); ?>
-                            <button type="submit" class="btn btn-default  btn-lg"  name="createtable" value="Y"><?php eT("Switch to closed-access mode"); ?></button>
-                            <a href="<?php echo $this->createUrl("surveyAdministration/view/surveyid/$oSurvey->sid"); ?>" class="btn btn-default  btn-lg"><?php eT("Continue in open-access mode"); ?></a>
-                    <?php echo CHtml::endForm() ?>
-
+                            <button type="submit" class="btn btn-default  btn-lg"  name="createtable" value="Y">
+                                <?php eT("Switch to closed-access mode"); ?>
+                            </button>
+                            <a href="<?php echo $this->createUrl("surveyAdministration/view/surveyid/$oSurvey->sid"); ?>" class="btn btn-default  btn-lg">
+                                <?php eT("Continue in open-access mode"); ?>
+                            </a>
+                        <?php echo CHtml::endForm() ?>
 
                     <?php
-                    }else{
+                    } else {
                         eT("You don't have the permission to activate participants.");
                     ?>
-                    <input type='submit' value='<?php eT("Back to main menu"); ?>' onclick="window.open('<?php echo $this->createUrl("surveyAdministration/view/surveyid/$oSurvey->sid"); ?>', '_top')" /></div>
+                    <input type='submit' value='<?php eT("Back to main menu"); ?>' onclick="window.open('<?php echo $this->createUrl("surveyAdministration/view/surveyid/$oSurvey->sid"); ?>', '_top')" />
+            </div>
 
                     <?php
                     }
